@@ -52,7 +52,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
       cb(null, file.originalname )
     }
-  })
+})
 
 const upload = multer({ storage: storage })
 
@@ -66,8 +66,8 @@ app.post('/enter', upload.single('image'),
             res.status(200).json({userId: users.at(-1).userId, site: '/game'})
 
         } else if (started.started === true) {
-            users.push({"username": username, "userId":users.length ? users.at(-1).userId + 1 : 1,"profileImg":image,"gaming":false,"turn":false})
-            fs.writeFileSync('./database/users.json', JSON.stringify(users))
+            // users.push({"username": username, "userId":users.length ? users.at(-1).userId + 1 : 1,"profileImg":image,"gaming":false,"turn":false})
+            // fs.writeFileSync('./database/users.json', JSON.stringify(users))
             res.status(200).json({userId: users.at(-1).userId, site: '/wait'})                                                         
         }   
     }
@@ -134,4 +134,4 @@ app.post('/next', (req, res) => {
   res.end()
 })
 
-app.listen(PORT, console.log('http://localhost:' + PORT))
+app.listen(PORT, console.log('http://192.168.42.212:' + PORT))

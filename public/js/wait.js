@@ -10,11 +10,12 @@ async function way() {
 
     if (!userId) {
         let url = await fetch('/404')
-        console.log(url);
+        window.location = url.url
     }
 
     if (!started.started) {
-        window.location = '/game'
+        let url = await fetch('/game')
+        window.location = url.url
     }
 }
 
