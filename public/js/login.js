@@ -22,6 +22,7 @@ submit.onclick = async(e) => {
       }
     }catch (error) {
       console.log(error);
+      window.location = '/404'
       alert('Something went wrong')
     }
   } else alert('Invalid input')
