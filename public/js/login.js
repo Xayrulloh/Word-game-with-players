@@ -13,16 +13,18 @@ submit.onclick = async(e) => {
       })
       const data = await test.json()
       if (data.status >= 400 && data.status <= 499) {throw new Error('Deeng')}
+
+      console.log(test);
       
       window.localStorage.setItem('userId', data.userId)
       if (data.site == '/game') {
-        // window.location = data.site
+        window.location = data.site
       } else {
         alert('Please try later again')
       }
     }catch (error) {
       console.log(error);
-      // window.location = '/404'
+      window.location = '/404'
       alert('Something went wrong')
     }
   } else alert('Invalid input')
