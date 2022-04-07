@@ -62,7 +62,7 @@ app.post('/enter', upload.single('image'),
         
         if (started.started === false) {
             users.push({"username": username, "userId":users.length ? users.at(-1).userId + 1 : 1,"profileImg":image,"gaming":true,"turn":users.length ? false : true})
-            fs.writeFileSync('./database/users.json', JSON.stringify(users))
+            fs.writeFileSync('./database/users.json', JSON.stringify(users, null, 2))
             res.status(200).json({userId: users.at(-1).userId, site: '/game'})
 
         } else if (started.started === true) {
@@ -134,4 +134,4 @@ app.post('/next', (req, res) => {
   res.end()
 })
 
-app.listen(PORT, console.log('PORT' + PORT))
+app.listen(PORT, console.log('http://localhost:' + PORT))
